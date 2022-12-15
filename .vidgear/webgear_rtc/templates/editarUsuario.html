@@ -1,0 +1,71 @@
+<!-- Página para Editar al Usuario -->
+{% extends "base.html" %}
+{% block title %}Sistema de Vigilancia || Dashboard{% endblock %}
+{% block nav %}
+<nav class="navbar-sidebar">
+  <ul class="list-unstyled navbar__list">
+      <li class="has-sub">
+          <a class="js-arrow" href="{{url_for('camaras')}}">
+              <i class="fas fa-home"></i>Inicio</a>
+      </li>
+      <li class="has-sub">
+          <a class="js-arrow" href="{{url_for('ondemand')}}">
+              <img src="{{url_for('static', path='/img/searchv.png')}}" class="imgV">Buscador de Videos</a>
+      </li>
+      {% if tipo == "Administrador" %}
+      <li class="active has-sub">
+          <a class="js-arrow" href="{{url_for('dashboard')}}">
+              <i class="fas fa-users"></i>Usuarios</a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>
+{% endblock %}
+{% block user %}
+    {{name}}
+{% endblock %}
+{% block body %}
+<div class="section__content section__content--p30">
+    <!-- Formulario  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <div class="container">
+            <h2 style="text-align: center;">Editar Usuario</h2>
+            <br>
+            <form action="{{url_for('update', usuario_id = usuario.id)}}" class="needs-validation" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="fullname" class="form-control"id="fullname" placeholder="Nombre Completo" value="{{ usuario.fullname }}" required>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Usuario" value="{{ usuario.username }}" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" value="{{ usuario.password }}" required>
+                        <span class="fa fa-fw fa-eye password-icon show-password"></span>
+                    </div>
+                    <div class="col">
+                        <input type="password" name="confirm_password" class="form-control" id="password2" placeholder="Confirmar Contraseña" value="{{ usuario.confirm_password }}" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <select name="tipo_de_acceso" class="form-select" required>
+                            <option selected disabled value="">Tipo de Acceso</option>
+                            <option value="Administrador" >Administrador</option>
+                            <option value="Usuario">Usuario</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="ButtonM">
+                    <button class="w-20 btn btn-primary buttonEditar" id="btnAct" type="submit">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}

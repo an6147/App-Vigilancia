@@ -1,0 +1,42 @@
+/* Estilos para el Menú Animadno (Expandir y Contraer */
+#sidebar{
+    transition: all .3s ease;
+}
+
+    #sidebar.active{
+        left: -300px;
+    }
+
+#header_side{
+    transition: all .3s ease;
+}
+
+    #header_side.active{
+        left: -300px;
+    }
+
+#pContainer{
+    transition: all .3s ease;
+}
+    #pContainer.active{
+        padding-left: 0;
+        padding-right: 0;
+        width: 90%;
+        margin-left: 5%;
+    }
+
+#sidebar .toggle-btn{
+    z-index: 2;
+    position: absolute;
+    left: 289px;
+    top: 113px;
+    cursor: pointer;
+}
+
+#sidebar .toggle-btn i{
+    display: block;
+    width: 40px;
+    text-align: center;
+    font-size: 50px;
+    color: #0d6efd;
+}

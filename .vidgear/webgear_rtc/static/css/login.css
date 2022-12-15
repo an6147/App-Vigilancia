@@ -1,0 +1,175 @@
+/* Estilo General para el Login */
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.625;
+  color: #666;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("../img/fondo.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* Estilo del Formulario */
+.form-signin {
+  border-radius: 2%;
+  width: 100%;
+  max-width: 330px;
+  padding: 30px;
+  margin: auto;
+  background-color: #fff;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border: none;
+  border-bottom: 1px solid #005AA7;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: none;
+  border-bottom: 1px solid #005AA7;
+  margin-bottom: 20px;
+}
+
+form .buttonSesion{
+    color: #fff;
+    font-size: 16px;
+    background-color: #164073;
+    border-color: #164073;
+}
+  form .buttonSesion:hover{
+    color: #fff;
+    background-color: #20579b;
+    border-color: #20579b;
+    transition: .3s all ease;
+  }
+
+input.form-control:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+input.form-control:focus {
+  border: 2px solid #164073;
+  background-color: aliceblue;
+  transition: all .1s ease;
+}
+input.form-control:hover {
+  border: 3px solid #164073;
+  background-color: aliceblue;
+  transition: all .2s ease;
+}
+
+.grupo_inp{
+  position: relative;
+}
+  .grupo_inp input{
+    padding: 12px 0px 12px 42px;
+    outline: none;
+  }
+  .grupo_inp button{
+    padding: 12px 0px 12px 42px;
+    outline: none;
+  }
+  .grupo_inp i{
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -121px;
+    font-size: 15px;
+  }
+/* Estilos del Footer */
+footer{
+  padding: 5px 0;
+  background-color: #0e0e0eb9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.social-icons-container, .footer-contacto-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 5px;
+}
+
+.social-icon{
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border: 1px solid #f2f2f2;
+  background-image: url("../img/facebook.png");
+  background-position: center;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  margin: 5px 10px;
+}
+  .social-icon:hover{
+    background-color: #121212;
+    filter: invert(1);
+    transition: all .3s ease;
+  }
+
+.social-icon:nth-of-type(2){
+  background-image: url("../img/instagram.png");
+}
+
+.social-icon:nth-of-type(3){
+  background-image: url("../img/linkedin.png");
+}
+
+.social-icon:nth-of-type(4){
+  background-image: url("../img/pinterest.png");
+}
+
+.social-icon:nth-of-type(5){
+  background-image: url("../img/twitter.png");
+}
+
+.social-icon:nth-of-type(6){
+  background-image: url("../img/youtube.png");
+}
+
+.footer-contacto-container{
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.contacto-item{
+  font-size: 16px;
+  margin-top: 1px;
+  opacity: 0.8;
+}
+
+.copyright{
+  color: #f2f2f2;
+  opacity: 0.6;
+  text-align: center;
+}
+/* Estilo para los encabezados h2 */
+h2{
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 5px;
+}

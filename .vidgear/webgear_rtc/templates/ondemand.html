@@ -1,0 +1,35 @@
+<!-- Página para mostrar la barra de busqueda y el carousel -->
+{% extends "baseOndemand.html" %}
+{% block container %}
+
+    <!-- CAROUSEL CON LOS ELEMENTOS MAS RECIENTES -->
+    <div class="row mt-5 pt-5">
+        <h3>Grabaciones Recientes</h3>
+        <div class="carousel__container">
+            <button aria-label="Anterior" class="btn btn-ligth carousel__anterior"></button>
+
+            <div class="carousel__list" id="cardSuperContainer">
+                {% for _ in range(10) %}
+                <div class="carousel__element">
+                    <div class="card bg-dark text-white me-3">
+                        <a href="{{ url_for('video_streaming') }}?video={{ nombre_video }}" class="btn-video" data-bs-toggle="modal" data-bs-target="#videoModal">
+                          <img src="{{ url_for('static', path='img/miniatura.png') }}" class="card-img" alt="Miniatura de grabacion">
+                          <div class="card-img-overlay d-flex flex-row justify-content-between">
+                            <h5 class="card-title">2022-11-15</h5>
+                            <p class="card-text align-self-end">2:18</p>
+                          </div>
+                          <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                            <div class="fig-play d-flex justify-content-center align-items-center">
+                              <div class="fig-play__bg-play"></div>
+                            </div>
+                          </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+    
+            <button aria-label="Siguiente" class="btn btn-ligth carousel__siguiente"></button>
+        </div>
+    </div>
+{% endblock %}

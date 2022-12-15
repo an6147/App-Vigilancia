@@ -1,0 +1,99 @@
+<!-- Página del Dashboard -->
+{% extends "base.html" %}
+{% block title %}Sistema de Vigilancia || Dashboard{% endblock %}
+{% block nav %}
+<nav class="navbar-sidebar">
+  <ul class="list-unstyled navbar__list">
+      <li class="has-sub">
+          <a class="js-arrow" href="{{url_for('camaras')}}">
+              <i class="fas fa-home"></i>Inicio</a>
+      </li>
+      <li class="has-sub">
+          <a class="js-arrow" href="{{url_for('ondemand')}}">
+              <img src="{{url_for('static', path='/img/searchv.png')}}" class="imgV">Buscador de Videos</a>
+      </li>
+      {% if tipo == "Administrador" %}
+      <li class="active has-sub">
+          <a class="js-arrow" href="{{url_for('dashboard')}}">
+              <i class="fas fa-users"></i>Usuarios</a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>
+{% endblock %}
+{% block user %}
+    {{name}}
+{% endblock %}
+{% block body %}
+<div class="section__content section__content--p30">
+    <!-- Formulario  -->
+    <div id="content" class="p-4 p-md-5 pt-5">
+        <div class="container">
+            <h2 style="text-align: center;">Registro de Usuario</h2>
+            <br>
+            <form action="/dashboard" class="needs-validation" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="fullname" class="form-control"id="fullname" placeholder="Nombre Completo" required>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Usuario" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="col">
+                        <input type="password" name="confirm_password" class="form-control" id="password2" placeholder="Confirmar Contraseña" required>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <select name="tipo_de_acceso" class="form-select" required>
+                            <option selected disabled value="">Tipo de Acceso</option>
+                            <option value="Administrador" >Administrador</option>
+                            <option value="Usuario">Usuario</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+
+                <div class="ButtonM">
+                    <button class="w-20 btn btn-primary buttonRegistrar" id="btnAct" type="submit">Registrar</button>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div class="mt-3 container table-responsive">
+            <table class="table table-light table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Nombre Completo</th>
+                        <th scope="col">Tipo de Usuario</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuarios %}
+                        <tr>
+                            <td>{{ usuario.id }}</td>
+                            <td>{{ usuario.username }}</td>
+                            <td>{{ usuario.fullname }}</td>
+                            <td>{{ usuario.tipo_de_acceso }}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btnEspacio"><a class="bton" href="{{url_for('update', usuario_id = usuario.id)}}">Editar</a></button>
+                                <button type="button" class="btn btn-danger btnEspacio"><a class="bton" href="{{url_for('delete', usuario_id = usuario.id)}}">Eliminar</a></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

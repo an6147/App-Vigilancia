@@ -1,0 +1,87 @@
+<!-- Página para mostrar los resultados de la busqueda -->
+{% extends "baseOndemand.html" %}
+{% block container %}
+<div class="row g-5 mt-5 justify-content-center">
+  <h3>Resultados de Busqueda ({{ total_videos }})</h3>
+  <!-- mostrar el numero total de videos en una sola pagina -->
+  {% if total_videos|int() <= videos_x_pagina|int() %}
+    {% for _ in range(total_videos|int()) %}
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+      <div class="card bg-dark text-white">
+        <a href="{{ url_for('video_streaming') }}?video={{ nombre_video }}" class="btn-video" data-bs-toggle="modal" data-bs-target="#videoModal">
+          <img src="{{ url_for('static', path='img/miniatura.png') }}" class="card-img" alt="Miniatura de grabacion">
+          <div class="card-img-overlay d-flex flex-row justify-content-between">
+            <h5 class="card-title">2022-11-15</h5>
+            <p class="card-text align-self-end">2:18</p>
+          </div>
+          <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div class="fig-play d-flex justify-content-center align-items-center">
+              <div class="fig-play__bg-play"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+  <!-- ----------------------------------------------------------------------- -->
+  <!-- Mostrar el numero de videos por pagina definido -->
+  {% if total_videos|int() >= videos_x_pagina|int() and request.query_params['pagina']|int() != total_paginas|int() %}
+    {% for _ in range(videos_x_pagina|int()) %}
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+      <div class="card bg-dark text-white">
+        <a href="{{ url_for('video_streaming') }}?video={{ nombre_video }}" class="btn-video" data-bs-toggle="modal" data-bs-target="#videoModal">
+          <img src="{{ url_for('static', path='img/miniatura.png') }}" class="card-img" alt="Miniatura de grabacion">
+          <div class="card-img-overlay d-flex flex-row justify-content-between">
+            <h5 class="card-title">2022-11-15</h5>
+            <p class="card-text align-self-end">2:18</p>
+          </div>
+          <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div class="fig-play d-flex justify-content-center align-items-center">
+              <div class="fig-play__bg-play"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+  <!-- ----------------------------------------------------------------------- -->
+  <!-- Mostrar ultima pagina con los videos restantes -->
+  {% if total_videos|int() >= videos_x_pagina|int() and request.query_params['pagina']|int() == total_paginas|int() %}
+    {% for _ in range(total_videos - (videos_x_pagina * total_paginas_b)) %}
+    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3">
+      <div class="card bg-dark text-white">
+        <a href="{{ url_for('video_streaming') }}?video={{ nombre_video }}" class="btn-video" data-bs-toggle="modal" data-bs-target="#videoModal">
+          <img src="{{ url_for('static', path='img/miniatura.png') }}" class="card-img" alt="Miniatura de grabacion">
+          <div class="card-img-overlay d-flex flex-row justify-content-between">
+            <h5 class="card-title">2022-11-15</h5>
+            <p class="card-text align-self-end">2:18</p>
+          </div>
+          <div class="card-img-overlay d-flex justify-content-center align-items-center">
+            <div class="fig-play d-flex justify-content-center align-items-center">
+              <div class="fig-play__bg-play"></div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+  
+  <!-- PAGINACION DE BOOTSTRAP -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item {% if request.query_params['pagina']|int() <= 1|int() %}disabled{% endif %}"><a class="page-link" href="{{ url_for('busqueda') }}?pagina={{ request.query_params['pagina']|int() - 1|int() }}">Anterior</a></li>
+
+        {% for i in range(total_paginas) %}
+
+          <li class="page-item {% if request.query_params['pagina']|int() == i+1|int() %}active{% endif %}"><a class="page-link" href="{{ url_for('busqueda') }}?pagina={{i+1}}">{{i+1}}</a></li>
+
+        {% endfor %}
+
+        <li class="page-item {% if request.query_params['pagina']|int() >= total_paginas|int() %}disabled{% endif %}"><a class="page-link" href="{{ url_for('busqueda') }}?pagina={{ request.query_params['pagina']|int() + 1|int() }}">Siguiente</a></li>
+      </ul>
+    </nav>
+  </div>
+{% endblock %}

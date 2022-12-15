@@ -1,0 +1,108 @@
+<!-- Página del Buscador de Videos -->
+{% extends "base.html" %}
+{% block title %}Sistema de Vigilancia || Buscador de Videos{% endblock %}
+{% block nav %}
+<nav class="navbar-sidebar">
+  <ul class="list-unstyled navbar__list">
+      <li class="has-sub">
+          <a class="js-arrow" href="{{url_for('camaras')}}">
+              <i class="fas fa-home"></i>Inicio</a>
+      </li>
+      <li class="active has-sub">
+          <a class="js-arrow" href="{{url_for('ondemand')}}">
+              <img src="{{url_for('static', path='/img/searchv.png')}}" class="imgV">Buscador de Videos</a>
+      </li>
+      {% if tipo == "Administrador" %}
+      <li class="has-sub">
+          <a class="js-arrow" href="{{url_for('dashboard')}}">
+              <i class="fas fa-users"></i>Usuarios</a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>
+{% endblock %}
+{% block user %}
+    {{name}}
+{% endblock %}
+{% block body %}
+<div class="container2 py-5 px-5" id="container2">
+    <div class="row my-5 mb-5">
+        <div class="col-sm-8 col-md-6 col-lg-6 col-xl-8 ms-auto me-auto">
+          <form action="{{ url_for('consulta') }}" method="post">
+              <div class="row position-relative">
+                  
+                  <div id="rangeContainer" class="col-sm-12 col-md-12 col-lg-12 col-xl-12 form-group">
+                    <label for="reportrange" class="ms-5"><h5>Buscar por Rango de Fecha</h5></label>
+                    <div id="reportrange" class="form-control border-3 border-top-0 border-start-0 border-end-0 border-primary rounded-0">
+                        <i class="fa fa-calendar"></i>&nbsp;
+                        <span></span> <i class="fa fa-caret-down"></i>
+                      <input id="dateStart" name="dateStart" type="date" hidden>
+                      <input id="dateEnd" name="dateEnd" type="date" hidden>
+                    </div>
+                  </div>
+                  
+                  <div id="mesContainer" class="col-sm-12 col-md-12 col-lg-12 col-xl-12 form-group">
+                    <label for="mes" class="ms-5"><h5>Buscar por Año y Mes</h5></label>
+                    <input id="mes" type="month" class="form-control border-3 border-top-0 border-start-0 border-end-0 border-primary rounded-0" aria-label="Default select example" name="mes">
+                  </div>
+
+                    <div class="form-check form-switch form-group position-absolute top-0 ms-3">
+                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked data-bs-toggle="tooltip" data-bs-html="true" title="" checked>
+                    </div>
+
+                
+                <div class="form-group mt-3 text-center">
+                    <!-- <button class="btn btn-success btn-primary" type="submit">Enviar datos -- btn</button> -->
+                    <a class="btn btn-primary" href="{{ url_for('busqueda') }}?pagina=1">Buscar Grabaciones</a>
+                </div>
+            </div>
+          </form>
+        </div>
+    </div>
+
+    {% block container %}
+    {% endblock %}
+
+      <!-- Modal -->
+
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">2022-05-12</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <video id="video2" class="video-js video vjs-16-9 vjs-big-play-centered" controlsList="nodownload">
+            <source src="#" type="video/mp4">
+        </video>
+        </div>
+        <div class="modal-footer w-100">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Script para pausar video con la tecla espacio -->
+<!-- <script>
+        var body = document.body;
+        var video = document.querySelector("#sourceVideo");
+
+        var space = false;
+
+        body.onkeydown = function(e){
+            if (e.keyCode == 32 && !space) {
+                space = true;
+                video.pause();
+            }else if(e.keyCode == 32 && space){
+                space = false;
+                video.play();
+            }
+        }
+    </script> -->
+
+
+{% endblock %}

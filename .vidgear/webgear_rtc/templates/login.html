@@ -1,0 +1,72 @@
+<!-- Página del Login, esta no hereda nada asi que tiene sus propios estilos -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de Vigilancia || Login{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', path='img/logo.ico') }}">
+    <!-- Animaciones CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/animate.css') }}">
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/bootstrap.min.css') }}">
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/login.css') }}">
+    <link href="{{ url_for('static', path='css/font-face.css') }}" rel="stylesheet" media="all">
+    <link href="{{ url_for('static', path='vendor/font-awesome-5/css/fontawesome-all.min.css') }}" rel="stylesheet" media="all">
+</head>
+<body class="text-center">
+        
+        <form class="form-signin" action="/login" method="POST" id="formEnv" class="needs-validation">
+            <img class="mb-4" src="{{ url_for('static', path='img/Logo.png') }}" alt="" width="72" height="51">
+            
+            {% if error != '' %}
+            <div class="alert alert-primary alert-dismissible" role="alert">
+                <strong>{{error}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            <div class="grupo_inp">
+                <i class="fas fa-user"></i>
+                <input type="text" class="form-control form-control-sm" placeholder="Usuario" name="username" value="{{ nombre }}" required>
+            </div>
+            <div class="grupo_inp">
+                <i class="fas fa-key"></i>
+                <input type="password" class="form-control form-control-sm" placeholder="Contraseña" name="password" value="{{ cont }}" required> 
+            </div>
+            <button class="w-50 btn btn-sm buttonSesion" type="submit">Iniciar Sesión</button>        
+        </form>
+
+        <footer>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Redes Sociales</h2>
+                    <div class="social-icons-container">
+                        <a href="https://www.facebook.com/AbaeVzla" target="_blank" class="social-icon"></a>
+                        <a href="https://www.instagram.com/AbaeVzla/" target="_blank" class="social-icon"></a>
+                        <a href="https://www.linkedin.com/company/AbaeVzla/" target="_blank" class="social-icon"></a>
+                        <a href="https://www.pinterest.es/AbaeVzla/" target="_blank" class="social-icon"></a>
+                        <a href="https://twitter.com/AbaeVzla_" target="_blank" class="social-icon"></a>
+                        <a href="https://www.youtube.com/c/AbaeVzla" target="_blank" class="social-icon"></a>
+                     </div>
+                </div>
+                <div class="col-md-6">
+                    <h2>Contacto</h2>
+                    <div class="footer-contacto-container">
+                        <div>
+                            <li class="contacto-item">Teléfono: +58 212 207-54-01</li>
+                        </div>
+                        <div>
+                            <li class="contacto-item">Fax: +58 212 239-57-10</li>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <span class="copyright">&copy;2023, Sistema de Vigilancia ABAE</span>
+        </footer>
+
+    <script src="{{ url_for('static', path='js/bootstrap.min.js') }}"></script>
+</body>        
+</html>

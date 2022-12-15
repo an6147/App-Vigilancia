@@ -1,0 +1,81 @@
+/* ------- CAROUSEL -------- */
+
+.carousel__container{
+    position:relative;
+}
+
+.carousel__anterior,
+.carousel__siguiente {
+    position: absolute;
+    display: block;
+    width: fit-content;
+    height: 40px;
+    top: calc(50% - 35px);
+    cursor: pointer;
+    text-align: center;
+    z-index: 10;
+    background-color: transparent;
+    border: none;
+}
+
+/* BOTONES DE CAROUSEL */
+
+.carousel__anterior {
+    left: -30px;
+    background: url(../img/chevron-left-solid.svg) no-repeat center center;
+}
+
+.carousel__siguiente {
+    right: -15px;
+    background: url(../img/chevron-right-solid.svg) no-repeat center center;
+}
+
+.carousel__list {
+    overflow: hidden;
+}
+
+/* --------- BOTON PLAY ---------- */
+
+.fig-play {
+    background: #eeeeee55;
+    width: 65px;
+    height: 65px;
+    min-height: 40px;
+    min-width: 40px;
+    border-radius: 100%;
+    transition: all .3s ease;
+}
+
+.fig-play__bg-play {
+    width: 50%;
+    height: 50%;
+    padding: 1em;
+    margin-right: -0.5em;
+    background: #ffffff99;
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+}
+
+
+/* --------- VIDEO STYLES ---------- */
+
+/* BOTON POSTER DE VIDEO */
+.btn-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.btn-video:hover{
+    color: #fff;
+}
+.btn-video:hover .fig-play{
+    background: #ffffff77;
+    width: 75px;
+    height: 75px;
+    
+}
+
+.modal-backdrop.show{
+    z-index: 1;
+}
