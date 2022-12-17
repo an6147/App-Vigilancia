@@ -57,7 +57,7 @@ class Custom_Stream_Class:
                 vacia o no, si está vacia prosigue con el resto del código, sino,
                 se activar el icono de grabando ya que se captó movimiento en la cámara
                 correspondiente a ese path """
-                path1 = "\\.vidgear\\webgear_rtc\\static\\TEMP\\Cam1"
+                path1 = os.getcwd()+"\\.vidgear\\webgear_rtc\\static\\TEMP\\Cam1"
                 dir1 = os.listdir(path1) 
                 if (len(dir1) != 0):
                     #Camara 1
@@ -78,7 +78,7 @@ class Custom_Stream_Class:
 
                     imageOut1 = img1
                 #Ruta de la Cámara 2
-                path2 = "\\.vidgear\\webgear_rtc\\static\\TEMP\\Cam2"
+                path2 = os.getcwd()+"\\.vidgear\\webgear_rtc\\static\\TEMP\\Cam2"
                 dir2 = os.listdir(path2) 
                 if (len(dir2) != 0):
                     #Camara 2
@@ -99,7 +99,7 @@ class Custom_Stream_Class:
 
                     imageOut2 = img1
                 #Ruta de la Cámara 3
-                path3 = "\\.vidgear\\webgear_rtc\\static\\TEMP\\Cam3"
+                path3 = os.getcwd()+"\\.vidgear\\webgear_rtc\\static\\TEMP\\Cam3"
                 dir3 = os.listdir(path3) 
                 if (len(dir3) != 0):
                     #Camara 3
@@ -120,7 +120,7 @@ class Custom_Stream_Class:
 
                     imageOut3 = img1
                 #Ruta de la Cámara 4
-                path4 = "\\.vidgear\\webgear_rtc\\static\\TEMP\\Cam4"
+                path4 = os.getcwd()+"\\.vidgear\\webgear_rtc\\static\\TEMP\\Cam4"
                 dir4 = os.listdir(path4) 
                 if (len(dir4) != 0):
                     #Camara 4
