@@ -123,13 +123,12 @@
 /* MediaQueries para el responsive design */
 @media (max-width: 1500px){
     .video-container {
-        height: 30rem;
+        height: 31rem;
     }
     .video-container-expand {
-        height: 34rem;
+        height: 35rem;
     }
 }
-
 @media (max-width: 1200px){
     .video-container {
         height: 30rem;

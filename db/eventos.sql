@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-12-2022 a las 23:03:21
+-- Tiempo de generación: 17-12-2022 a las 23:17:07
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -18,50 +18,44 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `app_vigilancia`
+-- Base de datos: `eventos`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `registro`
 --
 
-CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` char(102) NOT NULL,
-  `confirm_password` char(102) NOT NULL,
-  `fullname` varchar(50) NOT NULL,
-  `tipo_de_acceso` varchar(20) NOT NULL
+CREATE TABLE `registro` (
+  `ID` int(11) NOT NULL,
+  `NOMBRE` text NOT NULL,
+  `FECHA` date NOT NULL,
+  `DIREC_VIDEO` text NOT NULL,
+  `DIREC_MINI` text NOT NULL,
+  `COMEN` text NOT NULL,
+  `DURACION` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id`, `username`, `password`, `confirm_password`, `fullname`, `tipo_de_acceso`) VALUES
-(1, 'admin', 'admin', 'admin', 'ABAE, Puerto Cabello', 'Administrador');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `registro`
 --
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `registro`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT de la tabla `registro`
 --
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `registro`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,12 +6,11 @@ from starlette.requests import Request
 from starlette.routing import Route
 from pathlib import Path
 import uvicorn, cv2
-import pymysql
 import imutils
 import math
 import os
 #Modulos del Sistema
-from modulos import ModC, BD_ModB
+from modulos import ModC
 #Funciones de la Base de Datos "usuarios"
 from usuarios_db.db import get_all_usuarios, inicio_session, crear_usuario, get_usuario_by_id, update_usuario, delete_usuario
 #Funciones para las Sesiones
@@ -378,11 +377,11 @@ async def consulta(request: Request)->Response:
 options = {"custom_data_location": "./", #Opción para guardar el proyecto en la dirección actual
             "enable_infinite_frames": True, #Se mostrarán frames en caso de que la conexion con las cámaras se cierre 
             #"enable_live_broadcast": True, #Habilitar conexión para multiples clientes
-            #"custom_stream": Custom_Stream_Class(source1=1, source2=1, source3=1, source4=1)} #Establecer videos como fuentes y no cámaras
+            #"custom_stream": Custom_Stream_Class(source1=1, source2=1, source3=1, source4= 1)} #Establecer videos como fuentes y no cámaras
            "custom_stream": Custom_Stream_Class(source1 = os.getcwd()+"\\.vidgear\\webgear_rtc\\static\\video\\v1.mp4", source2 = os.getcwd()+"\\.vidgear\\webgear_rtc\\static\\video\\v2.mp4", source3 = os.getcwd()+"\\.vidgear\\webgear_rtc\\static\\video\\v3.mp4" , source4 = os.getcwd()+"\\.vidgear\\webgear_rtc\\static\\video\\v4.mp4")}
             #Establecer las cámaras como fuentes de video
 #Creando la instancia WEbGear_RTC con sus parámetros            
-web = WebGear_RTC(logging=True, stabilize=True, time_delay=5, **options)
+web = WebGear_RTC(logging=True, stabilize=True, time_delay=0, **options)
 #Estableciendo parámetros para el manejo de las sesiones
 web.middleware =[
     Middleware(SessionMiddleware, store=CookieStore(secret_key="v8$I9p50l$%Z"), cookie_https_only=False),
