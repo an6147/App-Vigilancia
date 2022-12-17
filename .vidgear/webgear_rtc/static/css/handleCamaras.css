@@ -126,10 +126,9 @@
         height: 30rem;
     }
     .video-container-expand {
-        height: 34rem;
+        height: 35rem;
     }
 }
-
 @media (max-width: 1200px){
     .video-container {
         height: 30rem;
