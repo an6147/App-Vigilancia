@@ -10,56 +10,6 @@ def main():
     #lectura_ID()
     #eliminar_intervalo_fechas("1900-01-01", "2022-12-12",)
     #eliminar_ID()
-    #print('main')
-
-def create_db():
-    #conexion con el servidor
-    conexion = mysql.connector.connect (
-                                        host = "localhost",
-                                        user = "root",
-                                        password = "",
-                                        )
-
-    #creación del cursor
-    cursor = conexion.cursor()
-
-    #creación de nueva base de datos
-    try:
-        cursor.execute("CREATE DATABASE pruebas;")
-        return True
-    except:
-        return False
-
-
-def create_tabla():
-    conexion = mysql.connector.connect(
-        host = 'localhost',
-        user = 'root',
-        password = '',
-        db = 'eventos'
-    )
-
-    #creación del cursor
-    cursor = conexion.cursor()
-
-    #creación de una tabla
-    try:
-        cursor.execute("CREATE TABLE registro" 
-        "(ID INT(11) NOT NULL AUTO_INCREMENT,"
-        "NOMBRE TEXT NOT NULL COLLATE 'utf8mb4_general_ci',"
-        "FECHA DATE NOT NULL,"
-        "DIREC_VIDEO TEXT NOT NULL COLLATE 'utf8mb4_general_ci',"
-        "DIREC_MINI TEXT NOT NULL COLLATE 'utf8mb4_general_ci', "
-        "COMEN TEXT NOT NULL COLLATE 'utf8mb4_general_ci',"
-        "DURACION TIME NOT NULL, "
-        "PRIMARY KEY ID USING BTREE);")
-        
-        return True
-    except:
-        return False
-
-
-
 
     
 def conexion_db():

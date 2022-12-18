@@ -399,6 +399,6 @@ web.routes.append(Route("/update/{usuario_id:int}/", endpoint=update, methods=["
 web.routes.append(Route("/delete/{usuario_id:int}/", endpoint=delete))
 web.routes.append(Route("/logout", endpoint=logout))
 """Levantamiento del servidor"""
-uvicorn.run(web(), host="0.0.0.0", port=8000)
+uvicorn.run(web(), host="26.252.156.247", port=8000)
 """Función para cerrar el servidor"""
 web.shutdown()

@@ -137,7 +137,7 @@ def detectar_y_grabar(index, Cam, folder_temp_direc, folder_thumbnail_direc, fol
 				full_nombre = "Cam" + str(Cam)+ " " + anio + "_" + mes + "_" + dia + "  " + hora + "_" + minuto + "_" + segundo
 				#direc_y_nombre_video = folder_videos_direc + str(Cam) + '\\' + str(anio) + '\\' + str(datetime.strftime(now,'%b')) + '\\' + str(dia) + '\\' + full_nombre + '.mp4'
 				direc_y_nombre_video = folder_temp_direc + str(Cam) + '\\' + full_nombre + '.mp4'
-				salida = cv2.VideoWriter(direc_y_nombre_video, cv2.VideoWriter_fourcc(*'mp4v'), 30, (ancho, alto))
+				salida = cv2.VideoWriter(direc_y_nombre_video, cv2.VideoWriter_fourcc(*'h264'), 30, (ancho, alto))
 
 				#Variables para la grabación
 				i_g = 0 # i de la grabacion util para controlar y determinar cuando finalizar
@@ -202,7 +202,7 @@ def detectar_y_grabar(index, Cam, folder_temp_direc, folder_thumbnail_direc, fol
 						direc_y_nombre_miniatura = folder_thumbnail_direc + str(Cam) + '\\' + str(anio) + '\\' + str(datetime.strftime(now,'%b')) + '\\' + str(dia) + '\\' + full_nombre + '.jpg'
 						direc_y_nombre_video = folder_videos_direc + str(Cam) + '\\' + str(anio) + '\\' + str(datetime.strftime(now,'%b')) + '\\' + str(dia) + '\\' + full_nombre + '.mp4'
 						#Registramos en la base de datos todo sobre el video
-						BD_MobB.insertar_video(full_nombre + '.mp4', now, direc_y_nombre_video, direc_y_nombre_miniatura,'' , segundos_a_segundos_minutos_y_horas(frames_cont, frame_rate))
+						BD_MobB.insertar_video(full_nombre + '.mp4', now, direc_y_nombre_video, direc_y_nombre_miniatura, '' , segundos_a_segundos_minutos_y_horas(frames_cont, frame_rate))
 						#Mover la miniatura y el video de la carpeta temporal a su destino final
 						shutil.move(folder_temp_direc + str(Cam) + '\\' + full_nombre + '.jpg', folder_thumbnail_direc + str(Cam) + '\\' + str(anio) + '\\' + str(datetime.strftime(now,'%b')) + '\\' + str(dia) + '\\' + full_nombre + '.jpg')
 						shutil.move(folder_temp_direc + str(Cam) + '\\' + full_nombre + '.mp4', folder_videos_direc + str(Cam) + '\\' + str(anio) + '\\' + str(datetime.strftime(now,'%b')) + '\\' + str(dia) + '\\' + full_nombre + '.mp4')
